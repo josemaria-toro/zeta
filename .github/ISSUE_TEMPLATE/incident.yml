@@ -1,0 +1,63 @@
+name: Incident
+description: Create an incident report
+labels: [ "incident" ]
+assignees:
+  - josemaria-toro
+body:
+  - type: input
+    id: reporter
+    attributes:
+      label: Reporter
+      description: How can we get in touch with you if we need more info?
+      value: email@example.com
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the incident is and the steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen
+    validations:
+      required: false
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      description: What type of device is affected?
+      options:
+        - Mobile (Android, iOS)
+        - Desktop (Windows, Linux, Apple)
+        - Others
+        - All
+      default: 0
+    validations:
+      required: false
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: What type of browser is affected?
+      options:
+        - Chrome
+        - Firefox
+        - Edge
+        - Safari
+        - Others
+        - All
+      default: 0
+    validations:
+      required: false
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Add any other information about the incident here
+    validations:
+      required: false

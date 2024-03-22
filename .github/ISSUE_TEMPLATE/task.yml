@@ -1,0 +1,30 @@
+name: Task
+description: Describe a non deployable task
+labels: [ "task" ]
+assignees:
+  - josemaria-toro
+body:
+  - type: input
+    id: reporter
+    attributes:
+      label: Reporter
+      description: How can we get in touch with you if we need more info?
+      value: email@example.com
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        A clear and concise description of task
+        Tip: if applicable, you can attach wireframes or snapshots to help explain the task
+    validations:
+      required: true
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Add any other information about the task here
+    validations:
+      required: false

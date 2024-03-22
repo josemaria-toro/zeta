@@ -1,0 +1,37 @@
+name: Feature
+description: Suggest a new idea or change
+labels: [ "feature" ]
+assignees:
+  - josemaria-toro
+body:
+  - type: input
+    id: reporter
+    attributes:
+      label: Reporter
+      description: How can we get in touch with you if we need more info?
+      value: email@example.com
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        A clear and concise description of feature or change
+        Tip: if applicable, you can attach wireframes or snapshots to help explain the feature or change
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criterias
+    attributes:
+      label: Acceptance criterias
+      description: Add the list of the acceptance criterias.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Add any other information about the feature or change here
+    validations:
+      required: false
