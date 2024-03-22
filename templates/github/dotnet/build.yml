@@ -1,0 +1,18 @@
+inputs:
+  version:
+    default: 1.0.0
+    required: false
+jobs:
+  steps:
+    - name: Clean workspace
+      run: dotnet clean --configuration Release --nologo --verbosity normal *.sln
+    - name: Restore dependencies
+      run: dotnet restore --nologo --verbosity normal *.sln
+    - name: Collect code quality data
+      run: dotnet sonarscanner begin /d:sonar.cs.vscoveragexml.reportsPaths=.artifacts/coverage/report.xml /d:sonar.host.url=$env.sonar_host_url /d:sonar.token=$secrets.sonar_project_token /d:sonar.verbose=true /k:$env.sonar_project_key /v:$input.version
+    - name: Build dotnet solution
+      run: dotnet build --configuration Release --nologo --no-restore --verbosity normal -p:Version=$input.version *.sln
+    - name: Collect code coverage data
+      run: dotnet-coverage collect "dotnet test --configuration Release --no-build --nologo --no-restore --verbosity normal *.UTests.csproj" -f xml -o .artifacts/coverage/report.xml
+    - name: Publish code quality data
+      run: dotnet sonarscanner end /d:sonar.token=$secrets.sonar_project_token
