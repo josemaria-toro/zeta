@@ -1,6 +1,5 @@
 inputs:
   version:
-    default: 1.0.0
     required: false
 jobs:
   steps:
@@ -9,6 +8,6 @@ jobs:
       with:
         compression-level: 9
         if-no-files-found: warn
-        name: packages-$input.version
+        name: packages-$inputs.version
         overwrite: true
         path: .artifacts/packages

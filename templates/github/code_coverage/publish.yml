@@ -1,7 +1,6 @@
 inputs:
   version:
-    default: 1.0.0
-    required: false
+    required: true
 jobs:
   steps:
     - name: Publish code coverage report
@@ -9,6 +8,6 @@ jobs:
       with:
         compression-level: 9
         if-no-files-found: warn
-        name: coverage-$input.version
+        name: coverage-$inputs.version
         overwrite: true
         path: .artifacts/coverage
