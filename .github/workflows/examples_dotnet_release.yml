@@ -4,9 +4,6 @@ defaults:
     shell: bash
     working-directory: examples/dotnet
 on:
-  pull_request:
-    branches: [ main ]
-    paths: [ "examples/dotnet/**" ]
   workflow_dispatch:
 jobs:
   checkout:
