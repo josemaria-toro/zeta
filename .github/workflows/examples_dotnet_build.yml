@@ -9,6 +9,7 @@ on:
     paths: [ "examples/dotnet/**" ]
   push:
     branches: [ main ]
+    paths: [ "examples/dotnet/**" ]
   workflow_dispatch:
 jobs:
   checkout:
