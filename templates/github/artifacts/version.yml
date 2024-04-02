@@ -1,6 +1,0 @@
-jobs:
-  steps:
-    - name: Artifacts version
-      run: echo "artifacts_version=$(date + '%Y.%m.%d.%H%M')" >> $GITHUB_ENV
-    - name: Artifacts version (preview)
-      run: echo "artifacts_version_preview=$(date + '%Y.%m.%d.preview-%H%M')" >> $GITHUB_ENV

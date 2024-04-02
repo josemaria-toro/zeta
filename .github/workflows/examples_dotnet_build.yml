@@ -1,4 +1,4 @@
-name: Build workflow
+name: Build .NET solution (example)
 defaults:
   run:
     shell: bash
@@ -25,16 +25,16 @@ jobs:
     needs: checkout
     runs-on: self-hosted
     steps:
-      - uses: ./.github/actions/artifacts-build-version/action.yml
-      - uses: ./.github/actions/dotnet-build/action.yml
+      - uses: josemaria-toro/github/.github/actions/artifacts-build-version@main
+      - uses: josemaria-toro/github/.github/actions/dotnet-build@main
         with:
           version: $env.artifacts_version_preview
-      - uses: ./.github/actions/publish-code-coverage/action.yml
+      - uses: josemaria-toro/github/.github/actions/publish-code-coverage@main
         with:
           version: $env.artifacts_version_preview
-      - uses: ./.github/actions/nuget-build/action.yml
+      - uses: josemaria-toro/github/.github/actions/nuget-build@main
         with:
           version: $env.artifacts_version_preview
-      - uses: ./.github/actions/nuget-publish/action.yml
+      - uses: josemaria-toro/github/.github/actions/nuget-publish@main
         with:
           version: $env.artifacts_version_preview

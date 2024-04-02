@@ -1,4 +1,4 @@
-# [Home](../../index.md) / [Templates](../index.md) / [Github Issues](./issues.md)
+# [Home](../index.md) / [Github Issues](./index.md)
 ## Bug
 This type of issue is for create a bug report.
 
