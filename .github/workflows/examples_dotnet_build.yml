@@ -25,16 +25,16 @@ jobs:
     needs: checkout
     runs-on: self-hosted
     steps:
-      - uses: josemaria-toro/github/workflows/artifacts-build-version.yml@main
-      - uses: josemaria-toro/github/workflows/dotnet-build.yml@main
+      - uses: josemaria-toro/github/actions/artifacts-build-version@main
+      - uses: josemaria-toro/github/actions/dotnet-build@main
         with:
           version: $env.artifacts_version_preview
-      - uses: josemaria-toro/github/workflows/publish-code-coverage.yml@main
+      - uses: josemaria-toro/github/actions/publish-code-coverage@main
         with:
           version: $env.artifacts_version_preview
-      - uses: josemaria-toro/github/workflows/nuget-build.yml@main
+      - uses: josemaria-toro/github/actions/nuget-build@main
         with:
           version: $env.artifacts_version_preview
-      - uses: josemaria-toro/github/workflows/nuget-publish.yml@main
+      - uses: josemaria-toro/github/actions/nuget-publish@main
         with:
           version: $env.artifacts_version_preview
