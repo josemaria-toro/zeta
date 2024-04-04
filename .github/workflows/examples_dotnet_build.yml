@@ -25,19 +25,19 @@ jobs:
     needs: checkout
     runs-on: self-hosted
     steps:
-      - uses: josemaria-toro/github/actions/artifacts-build-version@main
-      - uses: josemaria-toro/github/actions/dotnet-build@main
+      - uses: josemaria-toro/templates/actions/artifacts-build-version@main
+      - uses: josemaria-toro/templates/actions/dotnet-build@main
         with:
           sonar_host_url: "http://10.0.0.14:9000"
           sonar_project_key: "examples"
           sonar_project_token: "sqp_be0f09c2d85f70e0e0f9fbed3944c71146115314"
           version: $env.artifacts_version_preview
-      - uses: josemaria-toro/github/actions/publish-code-coverage@main
+      - uses: josemaria-toro/templates/actions/publish-code-coverage@main
         with:
           version: $env.artifacts_version_preview
-      - uses: josemaria-toro/github/actions/nuget-build@main
+      - uses: josemaria-toro/templates/actions/nuget-build@main
         with:
           version: $env.artifacts_version_preview
-      - uses: josemaria-toro/github/actions/nuget-publish@main
+      - uses: josemaria-toro/templates/actions/nuget-publish@main
         with:
           version: $env.artifacts_version_preview
