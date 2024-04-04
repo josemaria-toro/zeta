@@ -28,6 +28,9 @@ jobs:
       - uses: josemaria-toro/github/actions/artifacts-build-version@main
       - uses: josemaria-toro/github/actions/dotnet-build@main
         with:
+          sonar_host_url: "http://10.0.0.14:9000"
+          sonar_project_key: "examples"
+          sonar_project_token: "sqp_be0f09c2d85f70e0e0f9fbed3944c71146115314"
           version: $env.artifacts_version_preview
       - uses: josemaria-toro/github/actions/publish-code-coverage@main
         with:
