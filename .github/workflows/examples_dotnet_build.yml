@@ -1,8 +1,4 @@
 name: Build .NET solution (example)
-defaults:
-  run:
-    shell: bash
-    working-directory: examples/dotnet
 on:
   pull_request:
     branches: [ main ]
@@ -20,7 +16,10 @@ jobs:
       uses: actions/checkout@v4.1.1
   build:
     env:
-      sonar_project_key: examples-dotnet
+      sonar_host_url: "http://10.0.0.14:9000"
+      sonar_project_key: "examples"
+      sonar_project_token: "sqp_be0f09c2d85f70e0e0f9fbed3944c71146115314"
+      workspace: examples/dotnet
     name: Build
     needs: checkout
     runs-on: self-hosted
@@ -28,16 +27,18 @@ jobs:
       - uses: josemaria-toro/templates/actions/artifacts-build-version@v1.0.0
       - uses: josemaria-toro/templates/actions/dotnet-build@v1.0.0
         with:
-          sonar_host_url: "http://10.0.0.14:9000"
-          sonar_project_key: "examples"
-          sonar_project_token: "sqp_be0f09c2d85f70e0e0f9fbed3944c71146115314"
+          sonar_host_url: $env.sonar_host_url
+          sonar_project_key: $env.sonar_project_key
+          sonar_project_token: $env.sonar_project_token
           version: $env.artifacts_version_preview
+          workspace: $env.workspace
       - uses: josemaria-toro/templates/actions/publish-code-coverage@v1.0.0
         with:
           version: $env.artifacts_version_preview
       - uses: josemaria-toro/templates/actions/nuget-build@v1.0.0
         with:
           version: $env.artifacts_version_preview
+          workspace: $env.workspace
       - uses: josemaria-toro/templates/actions/nuget-publish@v1.0.0
         with:
           version: $env.artifacts_version_preview
