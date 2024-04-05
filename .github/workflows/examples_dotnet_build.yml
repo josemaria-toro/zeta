@@ -27,18 +27,18 @@ jobs:
       - uses: josemaria-toro/templates/actions/artifacts-build-version@v1.0.0
       - uses: josemaria-toro/templates/actions/dotnet-build@v1.0.0
         with:
-          sonar_host_url: $env.sonar_host_url
-          sonar_project_key: $env.sonar_project_key
-          sonar_project_token: $env.sonar_project_token
-          version: $env.artifacts_version_preview
-          workspace: $env.workspace
+          sonar_host_url: ${{ env.sonar_host_url }}
+          sonar_project_key: ${{ env.sonar_project_key }}
+          sonar_project_token: ${{ env.sonar_project_token }}
+          version: ${{ env.artifacts_version_preview }}
+          workspace: ${{ env.workspace }}
       - uses: josemaria-toro/templates/actions/publish-code-coverage@v1.0.0
         with:
-          version: $env.artifacts_version_preview
+          version: ${{ env.artifacts_version_preview }}
       - uses: josemaria-toro/templates/actions/nuget-build@v1.0.0
         with:
-          version: $env.artifacts_version_preview
-          workspace: $env.workspace
+          version: ${{ env.artifacts_version_preview }}
+          workspace: ${{ env.workspace }}
       - uses: josemaria-toro/templates/actions/nuget-publish@v1.0.0
         with:
-          version: $env.artifacts_version_preview
+          version: ${{ env.artifacts_version_preview }}
