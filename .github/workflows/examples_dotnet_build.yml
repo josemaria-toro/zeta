@@ -7,7 +7,16 @@ on:
     branches: [ main ]
     paths: [ "examples/dotnet/**" ]
   workflow_dispatch:
+env:
+  workspace: examples/dotnet
 jobs:
+  print_info:
+    name: Print information
+    runs-on: self-hosted
+    steps:
+      - uses: josemaria-toro/templates/actions/print-info@v1.0.0
+        with:
+          workspace: ${{ env.workspace }}
   checkout:
     name: Checkout
     runs-on: self-hosted
@@ -19,7 +28,6 @@ jobs:
       sonar_host_url: "http://10.0.0.14:9000"
       sonar_project_key: "examples"
       sonar_project_token: "sqp_be0f09c2d85f70e0e0f9fbed3944c71146115314"
-      workspace: examples/dotnet
     name: Build
     needs: checkout
     runs-on: self-hosted
