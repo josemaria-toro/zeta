@@ -24,10 +24,7 @@ jobs:
     needs: checkout
     runs-on: self-hosted
     steps:
-      - name: Print information
-        uses: josemaria-toro/templates/actions/print-info@v1.0.0
-        with:
-          workspace: ${{ env.workspace }}
+      - uses: josemaria-toro/templates/actions/dotnet-install@v1.0.0
       - uses: josemaria-toro/templates/actions/artifacts-build-version@v1.0.0
       - uses: josemaria-toro/templates/actions/dotnet-build@v1.0.0
         with:
