@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AnalysisLevel>5.0</AnalysisLevel>
+        <AssemblyName>Example.Console</AssemblyName>
+        <AssemblyOriginatorKeyFile>../signature.snk</AssemblyOriginatorKeyFile>
+        <AssemblyTitle>Description for the assembly manifest</AssemblyTitle>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <CodeAnalysisOutputToConsole>true</CodeAnalysisOutputToConsole>
+        <Company>Zeta Technologies</Company>
+        <Configuration>Release</Configuration>
+        <Configurations>Debug;Release</Configurations>
+        <Copyright>Zeta Technologies © 2024</Copyright>
+        <Description>Description of assembly</Description>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <FileVersion>1.0.0</FileVersion>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <InformationalVersion>1.0.0</InformationalVersion>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>false</IsTestProject>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Nullable>disable</Nullable>
+        <OutputType>exe</OutputType>
+        <Product>Examples</Product>
+        <RootNamespace>Zeta</RootNamespace>
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+        <RunCodeAnalysis>false</RunCodeAnalysis>
+        <SignAssembly>true</SignAssembly>
+        <TargetFramework>net8.0</TargetFramework>
+        <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <DefineDebug>true</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <DebugSymbols>false</DebugSymbols>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+</Project>

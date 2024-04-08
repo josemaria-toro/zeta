@@ -1,0 +1,34 @@
+name: Release .NET solution (example)
+defaults:
+  run:
+    shell: bash
+    working-directory: examples/dotnet
+on:
+  workflow_dispatch:
+jobs:
+  checkout:
+    name: Checkout
+    runs-on: self-hosted
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.1
+  build:
+    env:
+      sonar_project_key: examples-dotnet
+    name: Build
+    needs: checkout
+    runs-on: self-hosted
+    steps:
+      - uses: josemaria-toro/github/workflows/artifacts-build-version.yml@main
+      - uses: josemaria-toro/github/workflows/dotnet-build.yml@main
+        with:
+          version: $env.artifacts_version
+      - uses: josemaria-toro/github/workflows/publish-code-coverage.yml@main
+        with:
+          version: $env.artifacts_version
+      - uses: josemaria-toro/github/workflows/nuget-build.yml@main
+        with:
+          version: $env.artifacts_version
+      - uses: josemaria-toro/github/workflows/nuget-publish.yml@main
+        with:
+          version: $env.artifacts_version
